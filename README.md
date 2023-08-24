@@ -110,3 +110,57 @@ Text Normalization}},
 License
 -------
 NeMo-text-processing is under [Apache 2.0 license](LICENSE).
+
+
+Shiva's References
+------------------
+
+Text Normalization
+```
+import nemo_text_processing
+import os
+
+# create text normalization instance that works on cased input
+from nemo_text_processing.text_normalization.normalize import Normalizer
+normalizer = Normalizer(input_case='cased', lang='en', cache_dir='/grammars')
+
+# run normalization on example string input
+written = "We paid $123 for this desk."
+normalized = normalizer.normalize(written, verbose=True, punct_post_process=True)
+print(normalized)
+
+# Long input text could be split into sentences as follows:
+written = "Mr. Smith paid $111 in U.S.A. on Dec. 17th. We paid $123 for this desk."
+# split long text into sentences
+sentences = normalizer.split_text_into_sentences(written)
+for sent in sentences:
+    print(sent)
+
+# normalize each sentence separately using normalize() or all sentences at once with normalize_list()
+normalizer.normalize_list(sentences)
+```
+
+Export Text Normalization Grammars
+```
+python tools/text_processing_deployment/pynini_export.py --output_dir=/grammars/exported --language=en --grammars=tn_grammars --input_case=cased --cache_dir /grammars
+```
+
+Inverse Text Normalization
+```
+import nemo_text_processing
+import os
+
+# create inverse text normalization instance
+from nemo_text_processing.inverse_text_normalization.inverse_normalize import InverseNormalizer
+inverse_normalizer = InverseNormalizer(input_case='cased', lang='en', cache_dir='/grammars')
+
+# run ITN on example string input
+spoken = "we paid one hundred twenty three dollars for this desk"
+un_normalized = inverse_normalizer.inverse_normalize(spoken, verbose=True)
+print(un_normalized)
+```
+
+Export Inverse Text Normalization Grammars
+```
+python tools/text_processing_deployment/pynini_export.py --output_dir=/grammars/exported --language=en --grammars=itn_grammars --input_case=cased --cache_dir /grammars
+```
