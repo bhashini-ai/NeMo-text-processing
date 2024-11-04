@@ -15,6 +15,8 @@
 
 
 import pynini
+from pynini.lib import pynutil
+
 from nemo_text_processing.text_normalization.en.graph_utils import (
     NEMO_DIGIT,
     NEMO_SPACE,
@@ -28,7 +30,6 @@ from nemo_text_processing.text_normalization.hu.utils import (
     load_labels,
     naive_inflector,
 )
-from pynini.lib import pynutil
 
 QUARTERS = {15: "negyed", 30: "fél", 45: "háromnegyed"}
 
@@ -70,7 +71,7 @@ class TimeFst(GraphFst):
         "09:00 óra" -> time { hours: "2" }
         "02:15:10 óra" -> time { hours: "2" minutes: "15" seconds: "10"}
         "negyed 2" -> time { minutes: "15" hours: "1" }
-    
+
     Args:
         deterministic: if True will provide a single transduction option,
             for False multiple transduction are generated (used for audio-based normalization)

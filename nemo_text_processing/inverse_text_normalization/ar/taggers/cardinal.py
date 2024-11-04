@@ -13,16 +13,17 @@
 # limitations under the License.
 
 import pynini
-from nemo_text_processing.text_normalization.ar.graph_utils import NEMO_SPACE, GraphFst
 from pynini.lib import pynutil
+
+from nemo_text_processing.text_normalization.ar.graph_utils import NEMO_SPACE, GraphFst
 
 
 class CardinalFst(GraphFst):
     """
     Finite state transducer for classifying cardinals
         e.g. سالب تسعة وتسعون  -> cardinal { integer: "99" negative: "-" } }
-    Numbers below thirteen are not converted. 
-    Args: 
+    Numbers below thirteen are not converted.
+    Args:
         tn_cardinal: cardinal FST for TN
     """
 

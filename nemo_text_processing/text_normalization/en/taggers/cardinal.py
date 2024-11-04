@@ -14,6 +14,9 @@
 
 
 import pynini
+from pynini.examples import plurals
+from pynini.lib import pynutil
+
 from nemo_text_processing.text_normalization.en.graph_utils import (
     NEMO_DIGIT,
     NEMO_NOT_QUOTE,
@@ -23,13 +26,11 @@ from nemo_text_processing.text_normalization.en.graph_utils import (
 )
 from nemo_text_processing.text_normalization.en.taggers.date import get_four_digit_year_graph
 from nemo_text_processing.text_normalization.en.utils import get_abs_path
-from pynini.examples import plurals
-from pynini.lib import pynutil
 
 
 class CardinalFst(GraphFst):
     """
-    Finite state transducer for classifying cardinals, e.g. 
+    Finite state transducer for classifying cardinals, e.g.
         -23 -> cardinal { negative: "true"  integer: "twenty three" } }
 
     Args:

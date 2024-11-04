@@ -23,7 +23,6 @@ from nemo_text_processing.text_normalization.data_loader_utils import (
 )
 from nemo_text_processing.text_normalization.normalize import Normalizer
 
-
 '''
 Runs Evaluation on data in the format of : <semiotic class>\t<unnormalized text>\t<`self` if trivial class or normalized text>
 like the Google text normalization data https://www.kaggle.com/richardwilliamsproat/text-normalization-for-english-russian-and-polish
@@ -33,7 +32,13 @@ like the Google text normalization data https://www.kaggle.com/richardwilliamspr
 def parse_args():
     parser = ArgumentParser()
     parser.add_argument("--input", help="input file path", type=str)
-    parser.add_argument("--lang", help="language", choices=['en'], default="en", type=str)
+    parser.add_argument(
+        "--lang",
+        help="language",
+        choices=['ar', 'de', 'en', 'es', 'fr', 'hu', 'it', 'ru', 'sv', 'zh', 'hy'],
+        default="en",
+        type=str,
+    )
     parser.add_argument(
         "--input_case", help="input capitalization", choices=["lower_cased", "cased"], default="cased", type=str
     )

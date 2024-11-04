@@ -14,14 +14,15 @@
 
 
 import pynini
-from nemo_text_processing.text_normalization.en.graph_utils import NEMO_DIGIT, GraphFst, convert_space
 from pynini.lib import pynutil
+
+from nemo_text_processing.text_normalization.en.graph_utils import NEMO_DIGIT, GraphFst, convert_space
 
 
 class RangeFst(GraphFst):
     """
     This class is a composite class of two other class instances
-    
+
     Args:
         time: composed tagger and verbalizer
         date: composed tagger and verbalizer

@@ -23,10 +23,11 @@ from typing import List, Optional, Tuple, Union
 
 import pandas as pd
 import pynini
-from nemo_text_processing.inverse_text_normalization.en.taggers.cardinal import CardinalFst
-from nemo_text_processing.inverse_text_normalization.inverse_normalize import InverseNormalizer
 from pynini.lib.rewrite import top_rewrite
 from tqdm import tqdm
+
+from nemo_text_processing.inverse_text_normalization.en.taggers.cardinal import CardinalFst
+from nemo_text_processing.inverse_text_normalization.inverse_normalize import InverseNormalizer
 
 DELIMITER = '~~'
 
@@ -389,8 +390,8 @@ def clean_post_norm(
 
 def clean_libri_tts(target: str):
     """
-	Replace abbreviations in LibriTTS dataset
-	"""
+    Replace abbreviations in LibriTTS dataset
+    """
 
     # Normalized text in LibriTTS by Google which contains abbreviations from `libri_sometimes_converts_abbrs` sometimes wasn't converted.
     libri_sometimes_converts_abbrs = {"St.": "saint", "Rev.": "reverend"}
@@ -640,7 +641,7 @@ def get_diff(a: str, b: str):
 
 def diff_pred_gt(pred: str, gt: str):
     """returns list of different substrings between prediction and gt
-    relies on that prediction uses '< '  ' >'  
+    relies on that prediction uses '< '  ' >'
 
     Args:
         pred (str): prediction
@@ -648,7 +649,7 @@ def diff_pred_gt(pred: str, gt: str):
 
     Returns:
         list of Tuple(pred start and end, gt start and end) subsections
-    
+
     e.g. pred="< Edward third >., king Our own . loss had been < two thousand two hundred >"
          gt  ="Edward III., king Our own loss had been twenty two hundred"
          --> [([0, 16], [0, 10]),      ([32, 34], [26, 26]),      ([48, 76], [40, 58])]

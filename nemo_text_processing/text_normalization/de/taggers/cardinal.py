@@ -15,6 +15,8 @@
 from collections import defaultdict
 
 import pynini
+from pynini.lib import pynutil
+
 from nemo_text_processing.text_normalization.de.utils import get_abs_path, load_labels
 from nemo_text_processing.text_normalization.en.graph_utils import (
     NEMO_DIGIT,
@@ -23,7 +25,6 @@ from nemo_text_processing.text_normalization.en.graph_utils import (
     delete_space,
     insert_space,
 )
-from pynini.lib import pynutil
 
 AND = "und"
 
@@ -65,7 +66,7 @@ def get_ties_digit(digit_path: str, tie_path: str) -> 'pynini.FstLike':
 
 class CardinalFst(GraphFst):
     """
-    Finite state transducer for classifying cardinals, e.g. 
+    Finite state transducer for classifying cardinals, e.g.
         "101" ->  cardinal { integer: "ein hundert und zehn" }
 
     Args:

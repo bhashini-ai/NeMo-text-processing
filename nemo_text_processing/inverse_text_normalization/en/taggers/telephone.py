@@ -14,6 +14,8 @@
 # limitations under the License.
 
 import pynini
+from pynini.lib import pynutil
+
 from nemo_text_processing.inverse_text_normalization.en.utils import get_abs_path
 from nemo_text_processing.text_normalization.en.graph_utils import (
     INPUT_CASED,
@@ -28,7 +30,6 @@ from nemo_text_processing.text_normalization.en.graph_utils import (
     delete_space,
     insert_space,
 )
-from pynini.lib import pynutil
 
 
 def get_serial_number(cardinal):
@@ -60,7 +61,7 @@ def get_serial_number(cardinal):
 
 class TelephoneFst(GraphFst):
     """
-    Finite state transducer for classifying telephone numbers, e.g. 
+    Finite state transducer for classifying telephone numbers, e.g.
         one two three one two three five six seven eight -> { number_part: "123-123-5678" }
 
     This class also support card number and IP format.

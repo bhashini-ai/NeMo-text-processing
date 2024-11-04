@@ -13,6 +13,9 @@
 # limitations under the License.
 
 import pynini
+from pynini.examples import plurals
+from pynini.lib import pynutil
+
 from nemo_text_processing.text_normalization.en.graph_utils import (
     NEMO_CHAR,
     NEMO_DIGIT,
@@ -29,8 +32,6 @@ from nemo_text_processing.text_normalization.en.utils import (
     get_abs_path,
     load_labels,
 )
-from pynini.examples import plurals
-from pynini.lib import pynutil
 
 graph_teen = pynini.invert(pynini.string_file(get_abs_path("data/number/teen.tsv"))).optimize()
 graph_digit = pynini.invert(pynini.string_file(get_abs_path("data/number/digit.tsv"))).optimize()
@@ -42,7 +43,7 @@ year_suffix = pynini.string_map(year_suffix).optimize()
 
 def get_ties_graph(deterministic: bool = True):
     """
-    Returns two digit transducer, e.g. 
+    Returns two digit transducer, e.g.
     03 -> o three
     12 -> thirteen
     20 -> twenty
@@ -118,9 +119,9 @@ def _get_year_graph(cardinal_graph, deterministic: bool = True):
     Transducer for year, only from 1000 - 2999 e.g.
     1290 -> twelve nineteen
     2000 - 2009 will be verbalized as two thousand.
-    
+
     Transducer for 3 digit year, e.g. 123-> one twenty three
-    
+
     Transducer for year with suffix
     123 A.D., 4200 B.C
     """
@@ -158,7 +159,7 @@ def _get_financial_period_graph():
 
 class DateFst(GraphFst):
     """
-    Finite state transducer for classifying date, e.g. 
+    Finite state transducer for classifying date, e.g.
         jan. 5, 2012 -> date { month: "january" day: "five" year: "twenty twelve" preserve_order: true }
         jan. 5 -> date { month: "january" day: "five" preserve_order: true }
         5 january 2012 -> date { day: "five" month: "january" year: "twenty twelve" preserve_order: true }

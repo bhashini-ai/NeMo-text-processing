@@ -13,16 +13,17 @@
 # limitations under the License.
 
 import pynini
+from pynini.lib import pynutil
+
 from nemo_text_processing.text_normalization.en.graph_utils import NEMO_DIGIT, GraphFst, delete_space, insert_space
 from nemo_text_processing.text_normalization.ru.alphabet import RU_ALPHA_OR_SPACE
-from pynini.lib import pynutil
 
 
 class TelephoneFst(GraphFst):
     """
-    Finite state transducer for classifying telephone, which includes country code, number part and extension 
+    Finite state transducer for classifying telephone, which includes country code, number part and extension
 
-    E.g 
+    E.g
     "8-913-983-56-01" -> telephone { number_part: "восемь девятьсот тринадцать девятьсот восемьдесят три пятьдесят шесть ноль один" }
 
     Args:
