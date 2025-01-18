@@ -22,9 +22,9 @@ from ..utils import CACHE_DIR, parse_test_case_file
 
 
 class TestOrdinal:
-    inverse_normalizer = InverseNormalizer(lang='hi', cache_dir=CACHE_DIR, overwrite_cache=False)
+    inverse_normalizer = InverseNormalizer(lang='ka', cache_dir=CACHE_DIR, overwrite_cache=False)
 
-    @parameterized.expand(parse_test_case_file('hi/data_inverse_text_normalization/test_cases_ordinal.txt'))
+    @parameterized.expand(parse_test_case_file('ka/data_inverse_text_normalization/test_cases_ordinal.txt'))
     @pytest.mark.run_only_on('CPU')
     @pytest.mark.unit
     def test_denorm(self, test_input, expected):

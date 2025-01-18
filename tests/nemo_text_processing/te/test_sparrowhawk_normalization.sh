@@ -27,32 +27,32 @@ runtest () {
 }
 
 #testTNSpecialText() {
-#  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_special_text.txt
+#  input=$PROJECT_DIR/te/data_text_normalization/test_cases_special_text.txt
 #  runtest $input
 #}
 
 testTNCardinal() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_cardinal.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_cardinal.txt
   runtest $input
 }
 
 testTNDate() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_date.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_date.txt
   runtest $input
 }
 
 testTNDecimal() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_decimal.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_decimal.txt
   runtest $input
 }
 
 #testTNRange() {
-#  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_range.txt
+#  input=$PROJECT_DIR/te/data_text_normalization/test_cases_range.txt
 #  runtest $input
 #}
 
 #testTNSerial() {
-#  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_serial.txt
+#  input=$PROJECT_DIR/te/data_text_normalization/test_cases_serial.txt
 #  runtest $input
 #}
 
@@ -67,17 +67,17 @@ testTNDecimal() {
 #}
 
 testTNFraction() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_fraction.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_fraction.txt
   runtest $input
 }
 
 testTNMoney() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_money.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_money.txt
   runtest $input
 }
 
 #testTNOrdinal() {
-#  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_ordinal.txt
+#  input=$PROJECT_DIR/te/data_text_normalization/test_cases_ordinal.txt
 #  runtest $input
 #}
 
@@ -87,22 +87,22 @@ testTNMoney() {
 #}
 
 testTNTime() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_time.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_time.txt
   runtest $input
 }
 
 testTNMeasure() {
-  input=$PROJECT_DIR/hi/data_text_normalization/test_cases_measure.txt
+  input=$PROJECT_DIR/te/data_text_normalization/test_cases_measure.txt
   runtest $input
 }
 
 testTNWhitelist() {
- input=$PROJECT_DIR/hi/data_text_normalization/test_cases_whitelist.txt
+ input=$PROJECT_DIR/te/data_text_normalization/test_cases_whitelist.txt
  runtest $input
 }
 
 testTNWord() {
- input=$PROJECT_DIR/hi/data_text_normalization/test_cases_word.txt
+ input=$PROJECT_DIR/te/data_text_normalization/test_cases_word.txt
  runtest $input
 }
 

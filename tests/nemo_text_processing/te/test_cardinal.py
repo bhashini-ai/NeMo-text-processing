@@ -1,7 +1,7 @@
 # Copyright (c) 2024, NVIDIA CORPORATION.  All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
+# you may not use ttes file except in compliance with the License.
 # You may obtain a copy of the License at
 #
 #     http://www.apache.org/licenses/LICENSE-2.0
@@ -23,18 +23,18 @@ from ..utils import CACHE_DIR, parse_test_case_file
 
 class TestCardinal:
     normalizer = Normalizer(
-        input_case='cased', lang='hi', cache_dir=CACHE_DIR, overwrite_cache=False, post_process=False
+        input_case='cased', lang='te', cache_dir=CACHE_DIR, overwrite_cache=False, post_process=False
     )
-    inverse_normalizer = InverseNormalizer(lang='hi', cache_dir=CACHE_DIR, overwrite_cache=False)
+    inverse_normalizer = InverseNormalizer(lang='te', cache_dir=CACHE_DIR, overwrite_cache=False)
 
-    @parameterized.expand(parse_test_case_file('hi/data_text_normalization/test_cases_cardinal.txt'))
+    @parameterized.expand(parse_test_case_file('te/data_text_normalization/test_cases_cardinal.txt'))
     @pytest.mark.run_only_on('CPU')
     @pytest.mark.unit
     def test_norm(self, test_input, expected):
         pred = self.normalizer.normalize(test_input, verbose=False)
         assert pred.strip() == expected.strip()
 
-    @parameterized.expand(parse_test_case_file('hi/data_inverse_text_normalization/test_cases_cardinal.txt'))
+    @parameterized.expand(parse_test_case_file('te/data_inverse_text_normalization/test_cases_cardinal.txt'))
     @pytest.mark.run_only_on('CPU')
     @pytest.mark.unit
     def test_denorm(self, test_input, expected):
