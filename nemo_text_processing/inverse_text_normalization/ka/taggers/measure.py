@@ -16,14 +16,14 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import (
+from nemo_text_processing.inverse_text_normalization.ka.graph_utils import (
     GraphFst,
     convert_space,
     delete_extra_space,
     delete_space,
     insert_space,
 )
-from nemo_text_processing.inverse_text_normalization.hi.utils import get_abs_path
+from nemo_text_processing.inverse_text_normalization.ka.utils import get_abs_path
 
 
 class MeasureFst(GraphFst):
@@ -45,7 +45,7 @@ class MeasureFst(GraphFst):
         decimal_graph = decimal.final_graph_wo_negative
 
         optional_graph_negative = pynini.closure(
-            pynutil.insert("negative: ") + pynini.cross("ऋण", "\"true\"") + delete_extra_space, 0, 1,
+            pynutil.insert("negative: ") + pynini.cross("ಸಾಲ", "\"true\"") + delete_extra_space, 0, 1,
         )
 
         measurements_graph = pynini.string_file(get_abs_path("data/measure/measurements.tsv")).invert()

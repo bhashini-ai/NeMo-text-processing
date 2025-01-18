@@ -13,17 +13,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import GraphFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.cardinal import CardinalFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.date import DateFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.decimal import DecimalFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.fraction import FractionFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.measure import MeasureFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.money import MoneyFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.ordinal import OrdinalFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.time import TimeFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.whitelist import WhiteListFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.word import WordFst
+from nemo_text_processing.inverse_text_normalization.te.graph_utils import GraphFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.cardinal import CardinalFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.date import DateFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.decimal import DecimalFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.fraction import FractionFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.measure import MeasureFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.money import MoneyFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.ordinal import OrdinalFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.time import TimeFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.whitelist import WhiteListFst
+from nemo_text_processing.inverse_text_normalization.te.verbalizers.word import WordFst
 
 
 class VerbalizeFst(GraphFst):

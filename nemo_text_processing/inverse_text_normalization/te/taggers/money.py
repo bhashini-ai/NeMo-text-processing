@@ -14,14 +14,14 @@
 
 import pynini
 from pynini.lib import pynutil
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import (
+from nemo_text_processing.inverse_text_normalization.te.graph_utils import (
     GraphFst,
     convert_space,
     delete_extra_space,
     delete_space,
     insert_space,
 )
-from nemo_text_processing.inverse_text_normalization.hi.utils import apply_fst, get_abs_path
+from nemo_text_processing.inverse_text_normalization.te.utils import apply_fst, get_abs_path
 
 
 class MoneyFst(GraphFst):
@@ -47,7 +47,7 @@ class MoneyFst(GraphFst):
         self.paise = pynutil.insert("fractional_part: \"") + cardinal_graph + pynutil.insert("\"")
         self.fraction = decimal_graph
         self.currency = pynutil.insert("currency: \"") + currency_graph + pynutil.insert("\" ")
-        aur = pynutil.delete("और")
+        aur = pynutil.delete("మరియు")
 
         graph_currency_decimal = self.fraction + delete_extra_space + self.currency
         graph_currency_cardinal = self.integer + delete_extra_space + self.currency

@@ -15,8 +15,8 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import GraphFst, delete_space, insert_space
-from nemo_text_processing.inverse_text_normalization.hi.utils import get_abs_path
+from nemo_text_processing.inverse_text_normalization.te.graph_utils import GraphFst, delete_space, insert_space
+from nemo_text_processing.inverse_text_normalization.te.utils import get_abs_path
 
 
 class TimeFst(GraphFst):
@@ -36,12 +36,12 @@ class TimeFst(GraphFst):
         minute_graph = pynini.string_file(get_abs_path("data/time/minute_and_second.tsv")).invert()
         second_graph = pynini.string_file(get_abs_path("data/time/minute_and_second.tsv")).invert()
 
-        delete_baje = pynini.union(
-            pynutil.delete("बजके") | pynutil.delete("बजकर") | pynutil.delete("बजे") | pynutil.delete("घंटा")
+        delete_hour = pynini.union(
+            pynutil.delete("గంటల") | pynutil.delete("గంట") | pynutil.delete("గంటలకు")
         )
 
-        delete_minute = pynutil.delete("मिनट")
-        delete_second = pynutil.delete("सेकंड")
+        delete_minute = pynini.union( pynutil.delete("నిమిషాలు") | pynutil.delete("నిమిషాలకు"))
+        delete_second = pynutil.delete("సెకన్లు")
 
         self.hour = pynutil.insert("hours: \"") + hour_graph + pynutil.insert("\" ")
         self.minute = pynutil.insert("minutes: \"") + minute_graph + pynutil.insert("\" ")
@@ -51,7 +51,7 @@ class TimeFst(GraphFst):
         graph_hms = (
             self.hour
             + delete_space
-            + delete_baje
+            + delete_hour
             + delete_space
             + self.minute
             + delete_space
@@ -66,14 +66,14 @@ class TimeFst(GraphFst):
         graph_hm = (
             self.hour
             + delete_space
-            + pynini.closure(delete_baje, 0, 1)
+            + pynini.closure(delete_hour, 0, 1)
             + delete_space
             + self.minute
             + pynini.closure(delete_space + delete_minute, 0, 1)
         )
 
         # hour second
-        graph_hs = self.hour + delete_space + delete_baje + delete_space + self.second + delete_space + delete_second
+        graph_hs = self.hour + delete_space + delete_hour + delete_space + self.second + delete_space + delete_second
 
         # minute second
         graph_ms = (
@@ -81,7 +81,7 @@ class TimeFst(GraphFst):
         )
 
         # hour
-        graph_hour = self.hour + delete_space + delete_baje
+        graph_hour = self.hour + delete_space + delete_hour
 
         graph = graph_hms | graph_hm | graph_hs | graph_ms | graph_hour
         self.graph = graph.optimize()

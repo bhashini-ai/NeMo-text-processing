@@ -25,13 +25,13 @@ from pynini.examples import plurals
 from pynini.export import export
 from pynini.lib import byte, pynutil, utf8
 
-from nemo_text_processing.inverse_text_normalization.hi.utils import get_abs_path, load_labels
+from nemo_text_processing.inverse_text_normalization.te.utils import get_abs_path, load_labels
 
 NEMO_CHAR = utf8.VALID_UTF8_CHAR
 
 graph_digit = pynini.string_file(get_abs_path("data/numbers/digit.tsv"))
 
-NEMO_HI_DIGIT = pynini.union("०", "१", "२", "३", "४", "५", "६", "७", "८", "९").optimize()
+NEMO_TE_DIGIT = pynini.union("౦", "౧", "౨", "౩", "౪", "౫", "౬", "౭", "౮", "౯").optimize()
 
 NEMO_HEX = pynini.union(*string.hexdigits).optimize()
 NEMO_NON_BREAKING_SPACE = u"\u00A0"
@@ -60,7 +60,7 @@ MIN_NEG_WEIGHT = -0.0001
 MIN_POS_WEIGHT = 0.0001
 INPUT_CASED = "cased"
 INPUT_LOWER_CASED = "lower_cased"
-MINUS = pynini.union("ऋणात्मक", "नकारात्मक").optimize()
+MINUS = pynini.union("ऋణాత్మక", "నిజమే").optimize()
 
 
 def generator_main(file_name: str, graphs: Dict[str, 'pynini.FstLike']):

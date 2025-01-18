@@ -15,14 +15,14 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import (
-    NEMO_HI_DIGIT,
+from nemo_text_processing.inverse_text_normalization.ka.graph_utils import (
+    NEMO_KA_DIGIT,
     GraphFst,
     delete_extra_space,
     delete_space,
     insert_space,
 )
-from nemo_text_processing.inverse_text_normalization.hi.utils import get_abs_path
+from nemo_text_processing.inverse_text_normalization.ka.utils import get_abs_path
 
 
 class DateFst(GraphFst):
@@ -39,7 +39,7 @@ class DateFst(GraphFst):
         super().__init__(name="date", kind="classify")
 
         graph_year = pynutil.add_weight(
-            pynini.compose(cardinal.graph_no_exception, pynini.closure(NEMO_HI_DIGIT, 1, 4)), 0.03
+            pynini.compose(cardinal.graph_no_exception, pynini.closure(NEMO_KA_DIGIT, 1, 4)), 0.03
         )
 
         month_graph = pynini.string_file(get_abs_path("data/date/months.tsv"))

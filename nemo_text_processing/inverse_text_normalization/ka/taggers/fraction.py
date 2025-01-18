@@ -16,7 +16,7 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.utils import get_abs_path
+from nemo_text_processing.inverse_text_normalization.ka.utils import get_abs_path
 from nemo_text_processing.text_normalization.en.graph_utils import (
     INPUT_CASED,
     INPUT_LOWER_CASED,
@@ -55,7 +55,7 @@ class FractionFst(GraphFst):
 
         integer = pynutil.insert("integer_part: \"") + graph_cardinal + pynutil.insert("\" ")
         integer += delete_space
-        delete_bata = pynini.union(pynutil.delete(" बटा ") | pynutil.delete(" बटे "))
+        delete_bata = pynini.union(pynutil.delete(" ರಿಂದ ") | pynutil.delete(" ಆದರೆ "))
 
         numerator = pynutil.insert("numerator: \"") + graph_cardinal + pynutil.insert("\"")
         denominator = pynutil.insert(" denominator: \"") + graph_cardinal + pynutil.insert("\"")
@@ -65,7 +65,7 @@ class FractionFst(GraphFst):
         self.graph = graph.optimize()
         self.final_graph_wo_negative = graph
         optional_graph_negative = pynini.closure(
-            pynutil.insert("negative: ") + pynini.cross("ऋण", "\"true\"") + delete_extra_space, 0, 1,
+            pynutil.insert("negative: ") + pynini.cross("ಸಾಲ", "\"true\"") + delete_extra_space, 0, 1,
         )
         graph = optional_graph_negative + graph
         final_graph = self.add_tokens(graph)

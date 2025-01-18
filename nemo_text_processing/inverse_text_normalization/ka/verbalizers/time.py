@@ -16,9 +16,9 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import (
+from nemo_text_processing.inverse_text_normalization.ka.graph_utils import (
     NEMO_CHAR,
-    NEMO_HI_DIGIT,
+    NEMO_KA_DIGIT,
     GraphFst,
     delete_space,
     insert_space,
@@ -38,25 +38,25 @@ class TimeFst(GraphFst):
             pynutil.delete("hours:")
             + delete_space
             + pynutil.delete("\"")
-            + pynini.closure(NEMO_HI_DIGIT, 1)
+            + pynini.closure(NEMO_KA_DIGIT, 1)
             + pynutil.delete("\"")
         )
         minute = (
             pynutil.delete("minutes:")
             + delete_space
             + pynutil.delete("\"")
-            + pynini.closure(NEMO_HI_DIGIT, 1)
+            + pynini.closure(NEMO_KA_DIGIT, 1)
             + pynutil.delete("\"")
         )
         second = (
             pynutil.delete("seconds:")
             + delete_space
             + pynutil.delete("\"")
-            + pynini.closure(NEMO_HI_DIGIT, 1)
+            + pynini.closure(NEMO_KA_DIGIT, 1)
             + pynutil.delete("\"")
         )
 
-        graph_hour = hour + delete_space + pynutil.insert(":") + delete_space + pynutil.insert("००") + delete_space
+        graph_hour = hour + delete_space + pynutil.insert(":") + delete_space + pynutil.insert("೦೦") + delete_space
 
         # hour minute second
         graph_hms = (
@@ -81,7 +81,7 @@ class TimeFst(GraphFst):
             + delete_space
             + pynutil.insert(":")
             + delete_space
-            + pynutil.insert("००")
+            + pynutil.insert("೦೦")
             + delete_space
             + pynutil.insert(":")
             + second
@@ -90,7 +90,7 @@ class TimeFst(GraphFst):
 
         # minute second
         graph_ms = (
-            pynutil.insert("००")
+            pynutil.insert("೦೦")
             + delete_space
             + pynutil.insert(":")
             + delete_space

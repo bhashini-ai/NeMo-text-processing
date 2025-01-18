@@ -16,13 +16,13 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import (
+from nemo_text_processing.inverse_text_normalization.te.graph_utils import (
     NEMO_CHAR,
-    NEMO_HI_DIGIT,
+    NEMO_TE_DIGIT,
     NEMO_SIGMA,
     GraphFst,
 )
-from nemo_text_processing.inverse_text_normalization.hi.utils import get_abs_path
+from nemo_text_processing.inverse_text_normalization.te.utils import get_abs_path
 
 
 class OrdinalFst(GraphFst):
@@ -46,10 +46,9 @@ class OrdinalFst(GraphFst):
             graph_digit,
             graph_teens,
             graph_digit_hundred,
-            pynini.cross("वाँ", "वाँ"),
-            pynini.cross("वां", "वां"),
-            pynini.cross("वें", "वें"),
-            pynini.cross("वे", "वे"),
+            pynini.cross("వ", "వ"),
+            pynini.cross("వది", "వది"),
+            pynini.cross("టి", "టి"),
         )
 
         graph_fem_digit = pynini.string_file(get_abs_path("data/ordinals/digit_fem.tsv"))
@@ -59,20 +58,16 @@ class OrdinalFst(GraphFst):
             graph_fem_digit,
             graph_fem_teens,
             graph_digit_hundred_fem,
-            pynini.cross("वीं", "वीं"),
-            pynini.cross("वी", "वी"),
+            pynini.cross("వది", "వది"),
         )
         graph = pynini.compose(
             graph | graph_fem,
             (
                 cardinal_graph
                 + pynini.union(
-                    pynini.cross("वाँ", "वाँ"),
-                    pynini.cross("वां", "वां"),
-                    pynini.cross("वीं", "वीं"),
-                    pynini.cross("वी", "वी"),
-                    pynini.cross("वें", "वें"),
-                    pynini.cross("वे", "वे"),
+                    pynini.cross("వ", "వ"),
+                    pynini.cross("వది", "వది"),
+                    pynini.cross("టి", "టి"),
                 )
             ),
         ).optimize()
@@ -80,7 +75,7 @@ class OrdinalFst(GraphFst):
         morph_features_graph = pynini.string_file(get_abs_path("data/ordinals/morph_features.tsv"))
         morpho_graph = pynutil.insert("\" morphosyntactic_features: \"") + morph_features_graph + pynutil.insert("\"")
 
-        rule = pynini.cdrewrite(morpho_graph, pynini.closure(NEMO_HI_DIGIT), pynini.union("[EOS]", " "), NEMO_SIGMA)
+        rule = pynini.cdrewrite(morpho_graph, pynini.closure(NEMO_TE_DIGIT), pynini.union("[EOS]", " "), NEMO_SIGMA)
 
         final_graph = pynutil.insert("integer: \"") + graph @ rule
         final_graph = self.add_tokens(final_graph)

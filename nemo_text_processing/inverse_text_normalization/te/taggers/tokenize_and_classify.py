@@ -19,23 +19,23 @@ import os
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import (
+from nemo_text_processing.inverse_text_normalization.te.graph_utils import (
     GraphFst,
     delete_extra_space,
     delete_space,
     generator_main,
 )
-from nemo_text_processing.inverse_text_normalization.hi.taggers.cardinal import CardinalFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.date import DateFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.decimal import DecimalFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.fraction import FractionFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.measure import MeasureFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.money import MoneyFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.ordinal import OrdinalFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.punctuation import PunctuationFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.time import TimeFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.whitelist import WhiteListFst
-from nemo_text_processing.inverse_text_normalization.hi.taggers.word import WordFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.cardinal import CardinalFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.date import DateFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.decimal import DecimalFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.fraction import FractionFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.measure import MeasureFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.money import MoneyFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.ordinal import OrdinalFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.punctuation import PunctuationFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.time import TimeFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.whitelist import WhiteListFst
+from nemo_text_processing.inverse_text_normalization.te.taggers.word import WordFst
 
 
 class ClassifyFst(GraphFst):

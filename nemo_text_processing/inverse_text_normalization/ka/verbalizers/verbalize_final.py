@@ -16,9 +16,9 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.inverse_text_normalization.hi.graph_utils import GraphFst, delete_extra_space, delete_space
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.verbalize import VerbalizeFst
-from nemo_text_processing.inverse_text_normalization.hi.verbalizers.word import WordFst
+from nemo_text_processing.inverse_text_normalization.ka.graph_utils import GraphFst, delete_extra_space, delete_space
+from nemo_text_processing.inverse_text_normalization.ka.verbalizers.verbalize import VerbalizeFst
+from nemo_text_processing.inverse_text_normalization.ka.verbalizers.word import WordFst
 
 
 class VerbalizeFinalFst(GraphFst):
