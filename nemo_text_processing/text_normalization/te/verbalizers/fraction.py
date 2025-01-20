@@ -37,10 +37,10 @@ class FractionFst(GraphFst):
 
         integer = pynutil.delete("integer_part: \"") + pynini.closure(NEMO_NOT_QUOTE) + pynutil.delete("\" ")
         numerator = pynutil.delete("numerator: \"") + pynini.closure(NEMO_NOT_QUOTE) + pynutil.delete("\" ")
-        denominator = pynutil.delete("denominator: \"") + pynini.closure(NEMO_NOT_QUOTE) + pynutil.delete("\"")
-        insert_bata = pynutil.insert(" విభజించబడింది ")
+        denominator = pynutil.delete("denominator: \"") + pynini.closure(NEMO_NOT_QUOTE) + pynutil.delete("\"") + pynutil.insert("తో")
+        insert_bata = pynutil.insert(" భాగించండి ")
 
-        fraction_default = numerator + insert_bata + denominator
+        fraction_default = numerator + denominator + insert_bata
 
         self.graph = optional_sign + pynini.closure(pynini.closure(integer, 0, 1) + insert_space) + fraction_default
 
