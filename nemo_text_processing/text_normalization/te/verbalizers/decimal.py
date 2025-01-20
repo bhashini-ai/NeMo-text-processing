@@ -37,7 +37,7 @@ class DecimalFst(GraphFst):
             pynutil.delete("fractional_part: \"") + pynini.closure(NEMO_NOT_QUOTE, 1) + pynutil.delete("\"")
         )
 
-        self.fractional = pynutil.insert(" దశాంశం ") + self.fractional_default
+        self.fractional = pynutil.insert(" పాయింట్ ") + self.fractional_default
 
         self.quantity = (
             delete_space + insert_space + pynutil.delete("quantity: \"") + quantities + pynutil.delete("\"")
