@@ -54,7 +54,7 @@ class TimeFst(GraphFst):
         graph_hm = self.hours + delete_colon + insert_space + self.minutes
 
         # hour
-        graph_h = self.hours + delete_colon + pynutil.delete("೦೦")
+        graph_h = self.hours + delete_colon
 
         final_graph = graph_hms | graph_hm | graph_h
 
