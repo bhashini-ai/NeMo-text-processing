@@ -27,8 +27,8 @@ from pynini.lib import byte, pynutil, utf8
 NEMO_CHAR = utf8.VALID_UTF8_CHAR
 NEMO_DIGIT = byte.DIGIT
 
-NEMO_TE_DIGIT = pynini.union("౦", "೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯").optimize()
-NEMO_TE_NON_ZERO = pynini.union("೧", "೨", "೩", "೪", "೫", "೬", "೭", "೮", "೯").optimize()
+NEMO_TE_DIGIT = pynini.union("౦", "೧", "౨", "౩", "౪", "౫", "౬", "౭", "౮", "౯").optimize()
+NEMO_TE_NON_ZERO = pynini.union("೧", "౨", "౩", "౪", "౫", "౬", "౭", "౮", "౯").optimize()
 NEMO_TE_ZERO = "೦"
 NEMO_LOWER = pynini.union(*string.ascii_lowercase).optimize()
 NEMO_UPPER = pynini.union(*string.ascii_uppercase).optimize()
