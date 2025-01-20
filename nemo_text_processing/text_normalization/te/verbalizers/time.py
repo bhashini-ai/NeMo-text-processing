@@ -45,8 +45,8 @@ class TimeFst(GraphFst):
 
         insert_minute = pynutil.insert("నిమిషాలు")
         insert_second = pynutil.insert("సెకన్లు")
-        insert_bajkar = pynutil.insert("గంటకు")
-        insert_baje = pynutil.insert("గంటకు")
+        insert_bajkar = pynutil.insert("గంటలు")
+        insert_baje = pynutil.insert("గంటలకు")
 
         # hour minute second
         graph_hms = (
