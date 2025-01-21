@@ -52,9 +52,16 @@ class CardinalFst(GraphFst):
 
             return digit_graph + suffix + (zero ** zeros_counts) + insert_space + sub_graph
 
+        # Special case for 100–199
+        one_hundred_prefix = pynutil.insert("నూట ")
+        hundreds_special_case = pynini.cross("౧", one_hundred_prefix) + (
+            teens_ties | digit | pynutil.insert("")
+        )
+
         # Hundred graph
         suffix_hundreds = pynutil.insert(" వందల")
-        graph_hundreds = create_graph_suffix(digit, suffix_hundreds, 2)
+        graph_hundreds = hundreds_special_case
+        graph_hundreds |= create_graph_suffix(digit, suffix_hundreds, 2)
         graph_hundreds |= create_larger_number_graph(digit, suffix_hundreds, 1, digit)
         graph_hundreds |= create_larger_number_graph(digit, suffix_hundreds, 0, teens_ties)
         graph_hundreds.optimize()
