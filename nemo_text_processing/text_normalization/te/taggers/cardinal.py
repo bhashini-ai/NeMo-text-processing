@@ -46,7 +46,7 @@ class CardinalFst(GraphFst):
 
         def create_larger_number_graph(digit_graph, suffix, zeros_counts, sub_graph):
             insert_space = pynutil.insert(" ")
-            zero = pynutil.add_weight(pynutil.delete("೦"), -0.1)
+            zero = pynutil.add_weight(pynutil.delete("౦"), -0.1)
             if zeros_counts == 0:
                 return digit_graph + suffix + insert_space + sub_graph
 
