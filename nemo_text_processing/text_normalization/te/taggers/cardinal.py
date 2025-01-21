@@ -38,7 +38,7 @@ class CardinalFst(GraphFst):
         teens_and_ties = pynutil.add_weight(teens_ties, -0.1)
 
         def create_graph_suffix(digit_graph, suffix, zeros_counts):
-            zero = pynutil.add_weight(pynutil.delete("೦"), -0.1)
+            zero = pynutil.add_weight(pynutil.delete("౦"), -0.1)
             if zeros_counts == 0:
                 return digit_graph + suffix
 
