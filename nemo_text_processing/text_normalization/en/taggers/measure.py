@@ -141,7 +141,6 @@ class MeasureFst(GraphFst):
             pynutil.insert("decimal { ")
             + decimal.final_graph_wo_negative
             + pynini.cross("-", "")
-            + pynini.cross("\'s", "s")
             + pynutil.insert(' } units: "')
             + pynini.closure(NEMO_ALPHA, 1)
             + pynutil.insert('"')
