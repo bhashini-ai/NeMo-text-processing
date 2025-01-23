@@ -43,7 +43,7 @@ class AbbreviationFst(GraphFst):
 
         quote = pynini.accep("'")
         # two's -> twos
-        graph = NEMO_LOWER + quote + pynini.closure(NEMO_LOWER + quote, 1)
+        graph |= NEMO_LOWER + quote + pynini.closure(NEMO_LOWER + quote, 1)
 
         # exclude words that are included in the whitelist
         graph = pynini.compose(
