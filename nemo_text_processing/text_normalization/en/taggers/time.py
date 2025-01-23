@@ -75,12 +75,12 @@ class TimeFst(GraphFst):
         final_graph_hour = pynutil.insert("hours: \"") + graph_hour + pynutil.insert("\"")
         final_graph_minute = (
             pynutil.insert("minutes: \"")
-            + (pynini.cross("0", "o") + insert_space + graph_minute_single | graph_minute_double)
+            + insert_space + graph_minute_single | graph_minute_double)
             + pynutil.insert("\"")
         )
         final_graph_second = (
             pynutil.insert("seconds: \"")
-            + (pynini.cross("0", "o") + insert_space + graph_minute_single | graph_minute_double)
+            + insert_space + graph_minute_single | graph_minute_double)
             + pynutil.insert("\"")
         )
         final_suffix = pynutil.insert("suffix: \"") + convert_space(suffix_graph) + pynutil.insert("\"")
