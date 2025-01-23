@@ -16,7 +16,7 @@
 import pynini
 from pynini.lib import pynutil
 
-from nemo_text_processing.text_normalization.en.graph_utils import NEMO_UPPER, NEMO_LOWER, GraphFst, insert_space
+from nemo_text_processing.text_normalization.en.graph_utils import NEMO_UPPER, NEMO_DIGIT, GraphFst, insert_space
 
 
 class AbbreviationFst(GraphFst):
@@ -43,7 +43,7 @@ class AbbreviationFst(GraphFst):
 
         quote = pynini.accep("\'")
         # two's -> twos
-        graph |= NEMO_LOWER + quote + pynini.closure(NEMO_LOWER, 1)
+        graph |= NEMO_DIGIT + quote + pynini.closure(NEMO_DIGIT, 1)
 
         # exclude words that are included in the whitelist
         graph = pynini.compose(
