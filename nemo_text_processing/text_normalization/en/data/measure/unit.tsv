@@ -122,6 +122,7 @@ pb	PB
 pg	PG
 ps	PS
 s	second
+'s	\033[Ds
 tb	TB
 tb	YB
 zb	ZB

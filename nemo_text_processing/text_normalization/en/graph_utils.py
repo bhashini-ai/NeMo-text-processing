@@ -37,7 +37,7 @@ NEMO_ALNUM = pynini.union(NEMO_DIGIT, NEMO_ALPHA).optimize()
 NEMO_HEX = pynini.union(*string.hexdigits).optimize()
 NEMO_NON_BREAKING_SPACE = "\u00A0"
 NEMO_SPACE = " "
-NEMO_WHITE_SPACE = pynini.union(" ", "\t", "\n", "\r", "\u00A0").optimize()
+NEMO_WHITE_SPACE = pynini.union("-", " ", "\t", "\n", "\r", "\u00A0").optimize()
 NEMO_NOT_SPACE = pynini.difference(NEMO_CHAR, NEMO_WHITE_SPACE).optimize()
 NEMO_NOT_QUOTE = pynini.difference(NEMO_CHAR, r'"').optimize()
 
