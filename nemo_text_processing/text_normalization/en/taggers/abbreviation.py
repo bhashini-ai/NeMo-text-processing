@@ -41,7 +41,7 @@ class AbbreviationFst(GraphFst):
         # ABC -> A B C
         graph |= NEMO_UPPER + pynini.closure(insert_space + NEMO_UPPER, 1)
 
-        quote = pynini.accep("\'")
+        quote = pynini.accep("'")
         # two's -> twos
         graph |= NEMO_DIGIT + quote + pynini.closure(NEMO_DIGIT, 1)
 
